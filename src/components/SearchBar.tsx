@@ -1,0 +1,131 @@
+import React, { useState, useEffect } from 'react';
+import { Search, Filter, X } from 'lucide-react';
+import type { SearchFilters } from '../types';
+
+interface SearchBarProps {
+  query: string;
+  onQueryChange: (query: string) => void;
+  filters: SearchFilters;
+  onFiltersChange: (filters: SearchFilters) => void;
+  onAddToHistory: (query: string) => void;
+}
+
+const categories = [
+  { id: 'all', label: 'Toutes catégories' },
+  { id: 'nom', label: 'Noms' },
+  { id: 'verbe', label: 'Verbes' },
+  { id: 'adjectif', label: 'Adjectifs' },
+  { id: 'adverbe', label: 'Adverbes' },
+  { id: 'pronom', label: 'Pronoms' }
+];
+
+export function SearchBar({ query, onQueryChange, filters, onFiltersChange, onAddToHistory }: SearchBarProps) {
+  const [showFilters, setShowFilters] = useState(false);
+  const [inputValue, setInputValue] = useState(query);
+
+  useEffect(() => {
+    setInputValue(query);
+  }, [query]);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (inputValue.trim()) {
+      onQueryChange(inputValue);
+      onAddToHistory(inputValue.trim());
+    }
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    onQueryChange(value);
+  };
+
+  const clearSearch = () => {
+    setInputValue('');
+    onQueryChange('');
+  };
+
+  return (
+    <div className="w-full max-w-2xl mx-auto space-y-4">
+      <form onSubmit={handleSubmit} className="relative">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+          <input
+            type="text"
+            value={inputValue}
+            onChange={handleInputChange}
+            placeholder="Rechercher un mot en Nzébi ou en Français..."
+            className="w-full pl-10 pr-20 py-4 text-lg border border-gray-300 dark:border-gray-600 rounded-xl 
+                     bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400
+                     focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200
+                     shadow-sm hover:shadow-md focus:shadow-lg"
+          />
+          <div className="absolute right-3 top-1/2 transform -translate-y-1/2 flex items-center space-x-2">
+            {inputValue && (
+              <button
+                type="button"
+                onClick={clearSearch}
+                className="p-1 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+              >
+                <X className="w-4 h-4 text-gray-400" />
+              </button>
+            )}
+            <button
+              type="button"
+              onClick={() => setShowFilters(!showFilters)}
+              className={`p-2 rounded-lg transition-colors duration-200 ${
+                showFilters 
+                  ? 'bg-amber-100 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400' 
+                  : 'hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-400'
+              }`}
+            >
+              <Filter className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </form>
+
+      {showFilters && (
+        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg animate-in slide-in-from-top duration-200">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Catégorie grammaticale
+              </label>
+              <select
+                value={filters.category}
+                onChange={(e) => onFiltersChange({ ...filters, category: e.target.value })}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+                         bg-white dark:bg-gray-700 text-gray-900 dark:text-white
+                         focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors duration-200"
+              >
+                {categories.map((category) => (
+                  <option key={category.id} value={category.id}>
+                    {category.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Tri des résultats
+              </label>
+              <select
+                value={filters.sortBy}
+                onChange={(e) => onFiltersChange({ ...filters, sortBy: e.target.value as 'alphabetical' | 'relevance' })}
+                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+                         bg-white dark:bg-gray-700 text-gray-900 dark:text-white
+                         focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors duration-200"
+              >
+                <option value="relevance">Par pertinence</option>
+                <option value="alphabetical">Par ordre alphabétique</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
