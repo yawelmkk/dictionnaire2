@@ -23,11 +23,8 @@ export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, 
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Dictionnaire Nzébi
+                Dictionnaire Inzèbi
               </h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400">
-                Patrimoine linguistique africain
-              </p>
             </div>
           </div>
 
