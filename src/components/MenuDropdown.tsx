@@ -26,7 +26,45 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
   }, [isOpen, onClose]);
 
   const handleAbout = () => {
-    alert('À propos du Dictionnaire Nzébi\n\nCette application vise à préserver et promouvoir le patrimoine linguistique de la langue Nzébi. Elle permet aux locuteurs natifs, apprenants et chercheurs d\'explorer et d\'apprendre cette riche langue africaine.\n\nVersion 1.0');
+    alert(`À propos du Dictionnaire Nzébi
+
+Le dictionnaire Nzébi-français est une application conçue pour préserver, valoriser et transmettre la langue et le patrimoine culturel de l'ethnie Nzébi du Gabon et du Congo.
+
+Elle permet à tout utilisateur de découvrir des mots en langue nzébi, leur traduction en français, et dans certains cas, leur prononciation audio, afin d'en faciliter l'apprentissage et la mémorisation.
+
+Ce projet s'inscrit dans une démarche de sauvegarde des langues gabonaises minoritaires, souvent menacées de disparition à cause de l'exode rural, de la domination du français, et du vieillissement des locuteurs natifs.
+
+Origine des données linguistiques
+Les données de ce dictionnaire proviennent d'un travail existant, réalisé par: Luc de NADAILLAC, sous la forme d'un PDF librement accessible en ligne.
+Ce dictionnaire numérique ne prétend en aucun cas s'approprier ce travail. Au contraire, il vise à le valoriser, le diffuser et le rendre plus accessible, notamment aux jeunes générations.
+
+Nous reconnaissons et respectons la propriété intellectuelle de l'auteur initial, et l'application ne saurait exister sans sa contribution précieuse.
+
+Qui sont les Nzébi ?
+Les Nzébi (ou Ndzébi, parfois écrit Njebi) sont un peuple bantou du Gabon et du Congo-Brazzaville. Au Gabon, ils sont principalement présents dans le sud-est du pays.
+
+Localisation
+Ils sont installés dans la province du Haut-Ogooué (notamment autour de Franceville, Moanda, Bongoville) et aussi dans le sud de la Ngounié (Mbigou, Mandji, Lébamba, inounoushyabola, makongonio, Mouila).
+
+Le territoire nzébi se situe entre forêts équatoriales, plateaux sablonneux et zones minières, en bordure du fleuve Ogooué et de ses affluents.
+
+Population
+Leur population est estimée entre 50 000 et 70 000 personnes au Gabon, bien que beaucoup aient migré vers les villes comme Libreville ou Port-Gentil. Certains groupes Nzébi sont également présents au Congo-Brazzaville.
+
+Histoire, culture et langue
+Les Nzébi descendent de peuples bantous migrants, venus des rives du fleuve Congo.
+
+Ils sont réputés pour leur culture spirituelle riche, leurs rituels d'initiation (Bwiti, Mwiri, etc.), leurs masques traditionnels et leur oralité poétique.
+
+Leur langue, le nzébi, fait partie du groupe B.50 des langues bantoues, avec une grammaire complexe fondée sur les classes nominales et un système de tons.
+
+Cependant, cette langue est aujourd'hui en danger, menacée par la prédominance du français dans l'enseignement, les médias et la vie sociale. C'est pourquoi cette application souhaite contribuer, à son échelle, à la préservation de ce patrimoine linguistique précieux.
+
+En utilisant cette application, vous participez activement à la transmission de la langue nzébi.
+Merci de votre engagement et de votre curiosité.
+
+Merci d'utiliser cette application et de soutenir la mission de Langue Nzébi Officiel.
+En diffusant et en pratiquant la langue nzébi, vous aidez à faire vivre un patrimoine culturel précieux.`);
     onClose();
   };
 
