@@ -1,5 +1,6 @@
 import React from 'react';
-import { Moon, Sun, Heart, History, BookOpen } from 'lucide-react';
+import { Moon, Sun, Heart, History, BookOpen, MoreVertical } from 'lucide-react';
+import { MenuDropdown } from './MenuDropdown';
 
 interface HeaderProps {
   theme: 'light' | 'dark';
@@ -10,6 +11,8 @@ interface HeaderProps {
 }
 
 export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, onShowHistory }: HeaderProps) {
+  const [showMenu, setShowMenu] = React.useState(false);
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 transition-colors duration-200">
       <div className="max-w-4xl mx-auto px-4 py-4">
@@ -49,6 +52,21 @@ export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, 
                 </span>
               )}
             </button>
+
+            <div className="relative">
+              <button
+                onClick={() => setShowMenu(!showMenu)}
+                className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
+                title="Menu"
+              >
+                <MoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+              </button>
+              
+              <MenuDropdown 
+                isOpen={showMenu} 
+                onClose={() => setShowMenu(false)} 
+              />
+            </div>
 
             <button
               onClick={onThemeToggle}
