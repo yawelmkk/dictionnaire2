@@ -23,7 +23,7 @@ export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, 
             </div>
             <div>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
-                Dictionnaire Inzèbi
+                Dictionnaire inzèbi
               </h1>
             </div>
           </div>
