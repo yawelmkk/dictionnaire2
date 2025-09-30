@@ -74,7 +74,7 @@ En diffusant et en pratiquant la langue nzébi, vous aidez à faire vivre un pat
   };
 
   const handleContact = () => {
-    alert('Contactez-nous\n\nPour toute question, suggestion ou contribution au dictionnaire :\n\nEmail : contact@dictionnaire-nzebi.org\n\nNous serions ravis de recevoir vos commentaires pour améliorer cette ressource linguistique.');
+    window.location.href = 'mailto:languenzebiofficiel@gmail.com?subject=Contact%20-%20Dictionnaire%20Nzébi&body=Bonjour,%0D%0A%0D%0AJe%20vous%20contacte%20concernant%20le%20dictionnaire%20Nzébi.%0D%0A%0D%0ACordialement,';
     onClose();
   };
 
