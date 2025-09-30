@@ -93,8 +93,9 @@ function App() {
         onShowHistory={() => setShowHistory(true)}
       />
 
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        <div className="mb-8">
+      {/* Sticky Search Bar */}
+      <div className="sticky top-16 z-40 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 backdrop-blur-sm border-b border-gray-200/50 dark:border-gray-700/50">
+        <div className="max-w-4xl mx-auto px-4 py-4">
           <SearchBar
             query={query}
             onQueryChange={setQuery}
@@ -103,7 +104,9 @@ function App() {
             onAddToHistory={handleAddToHistory}
           />
         </div>
+      </div>
 
+      <main className="max-w-4xl mx-auto px-4 py-8">
         <SearchResults
           results={results}
           query={query}
