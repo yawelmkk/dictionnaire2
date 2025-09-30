@@ -69,7 +69,43 @@ En diffusant et en pratiquant la langue nzébi, vous aidez à faire vivre un pat
   };
 
   const handlePrivacy = () => {
-    alert('Politique de Confidentialité\n\nVos données personnelles sont stockées localement sur votre appareil. Nous ne collectons aucune information personnelle. Vos favoris et historique de recherche restent privés et ne sont pas partagés.');
+    alert(`Politique de Confidentialité du Dictionnaire Nzébi
+
+1. Introduction
+L'application Dictionnaire Nzébi (« nous », « notre », « nos ») est une application mobile conçue pour fournir une ressource linguistique sur la langue inzèbi. Votre vie privée est de la plus haute importance.
+
+La présente politique de confidentialité vise à vous informer de la manière dont nous traitons vos données.
+
+2. Absence de Collecte de Données Personnelles
+Le Dictionnaire Nzébi est conçu pour fonctionner sans collecter, stocker, transmettre ou traiter aucune donnée personnelle de ses utilisateurs.
+
+Nous ne demandons ni n'enregistrons votre nom, votre adresse e-mail, votre localisation, vos identifiants d'appareil ou toute autre information permettant de vous identifier.
+
+L'application ne nécessite pas de connexion à un compte utilisateur.
+
+Toutes les recherches de mots et les fonctionnalités (comme les favoris ou l'historique) sont stockées localement sur votre propre appareil et ne sont jamais transmises à nos serveurs ou à des tiers.
+
+3. Données Non-Personnelles
+Nous n'utilisons aucun outil d'analyse tiers ni aucun service de suivi qui pourrait collecter des informations sur la manière dont vous utilisez l'application.
+
+Si, à l'avenir, nous décidions d'intégrer des outils d'analyse pour améliorer l'application (par exemple, pour savoir quelles fonctionnalités sont les plus utilisées), nous veillerons à ce que ces données soient :
+
+Anonymes et agrégées (ne permettant pas d'identifier un utilisateur individuel).
+
+Et nous mettrons à jour cette politique en conséquence.
+
+4. Services Tiers
+L'application est autonome et ne partage pas vos données avec des services tiers, des annonceurs ou des partenaires.
+
+Si l'application est disponible via une boutique (comme l'App Store d'Apple ou le Google Play Store), leurs politiques de confidentialité respectives régissent les données qu'ils pourraient collecter au moment du téléchargement.
+
+5. Sécurité
+Puisque nous ne collectons aucune donnée personnelle, le risque de fuite de données personnelles est nul. La sécurité de vos données est assurée par le fait même qu'elles ne quittent jamais votre appareil.
+
+6. Contact
+Si vous avez des questions concernant cette politique de confidentialité, vous pouvez nous contacter à l'adresse suivante :
+
+languenzebiofficiel@gmail.com`);
     onClose();
   };
 
