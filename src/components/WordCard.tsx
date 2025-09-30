@@ -48,7 +48,7 @@ export function WordCard({ entry, isFavorite, onToggleFavorite }: WordCardProps)
         <div className="flex items-start justify-between mb-4">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
-              <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-200">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-200" translate="no">
                 {entry.nzebi_word}
               </h3>
               <button
@@ -91,7 +91,7 @@ export function WordCard({ entry, isFavorite, onToggleFavorite }: WordCardProps)
             </div>
             <div className="pl-6 space-y-1">
               {entry.example_nzebi && (
-                <p className="text-gray-700 dark:text-gray-300 italic">
+                <p className="text-gray-700 dark:text-gray-300 italic" translate="no">
                   {entry.example_nzebi}
                 </p>
               )}
@@ -112,7 +112,7 @@ export function WordCard({ entry, isFavorite, onToggleFavorite }: WordCardProps)
               <BookOpen className="w-4 h-4 text-gray-500 mt-0.5" />
               <div>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Forme plurielle : </span>
-                <span className="text-gray-700 dark:text-gray-300">{entry.plural_form}</span>
+                <span className="text-gray-700 dark:text-gray-300" translate="no">{entry.plural_form}</span>
               </div>
             </div>
           )}
@@ -123,7 +123,7 @@ export function WordCard({ entry, isFavorite, onToggleFavorite }: WordCardProps)
               <Tag className="w-4 h-4 text-gray-500 mt-0.5" />
               <div>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Impératif : </span>
-                <span className="text-gray-700 dark:text-gray-300">{entry.imperative}</span>
+                <span className="text-gray-700 dark:text-gray-300" translate="no">{entry.imperative}</span>
               </div>
             </div>
           )}
@@ -134,7 +134,7 @@ export function WordCard({ entry, isFavorite, onToggleFavorite }: WordCardProps)
               <FileText className="w-4 h-4 text-gray-500 mt-0.5" />
               <div>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Synonymes : </span>
-                <span className="text-gray-700 dark:text-gray-300">{entry.synonyms}</span>
+                <span className="text-gray-700 dark:text-gray-300" translate="no">{entry.synonyms}</span>
               </div>
             </div>
           )}
@@ -145,7 +145,7 @@ export function WordCard({ entry, isFavorite, onToggleFavorite }: WordCardProps)
               <Beaker className="w-4 h-4 text-gray-500 mt-0.5" />
               <div>
                 <span className="text-sm font-medium text-gray-600 dark:text-gray-400">Nom scientifique : </span>
-                <span className="text-gray-700 dark:text-gray-300 italic">{entry.scientific_name}</span>
+                <span className="text-gray-700 dark:text-gray-300 italic" translate="no">{entry.scientific_name}</span>
               </div>
             </div>
           )}

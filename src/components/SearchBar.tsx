@@ -56,6 +56,7 @@ export function SearchBar({ query, onQueryChange, filters, onFiltersChange, onAd
             value={inputValue}
             onChange={handleInputChange}
             placeholder="Rechercher un mot en Nzébi ou en Français..."
+            translate="no"
             className="w-full pl-10 pr-20 py-4 text-lg border border-gray-300 dark:border-gray-600 rounded-xl 
                      bg-white dark:bg-gray-800 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400
                      focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all duration-200
