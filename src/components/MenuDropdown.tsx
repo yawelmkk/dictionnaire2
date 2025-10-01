@@ -50,7 +50,7 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
     <>
     <div
       ref={dropdownRef}
-      className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-[100]"
+      className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
     >
       <button
         onClick={handleAbout}
