@@ -48,44 +48,44 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
 
   return (
     <>
-    <div
-      ref={dropdownRef}
-      className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
-    >
-      <button
-        onClick={handleAbout}
-        className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center gap-3"
+      <div
+        ref={dropdownRef}
+        className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 py-2 z-50"
       >
-        <Info className="w-4 h-4" />
-        À propos de
-      </button>
-      
-      <button
-        onClick={handlePrivacy}
-        className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center gap-3"
-      >
-        <Shield className="w-4 h-4" />
-        Confidentialité
-      </button>
-      
-      <button
-        onClick={handleContact}
-        className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center gap-3"
-      >
-        <Mail className="w-4 h-4" />
-        Contactez-nous
-      </button>
-    </div>
+        <button
+          onClick={handleAbout}
+          className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center gap-3"
+        >
+          <Info className="w-4 h-4" />
+          À propos de
+        </button>
+        
+        <button
+          onClick={handlePrivacy}
+          className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center gap-3"
+        >
+          <Shield className="w-4 h-4" />
+          Confidentialité
+        </button>
+        
+        <button
+          onClick={handleContact}
+          className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center gap-3"
+        >
+          <Mail className="w-4 h-4" />
+          Contactez-nous
+        </button>
+      </div>
 
-    <AboutModal
-      isOpen={showAbout}
-      onClose={() => setShowAbout(false)}
-    />
+      <AboutModal
+        isOpen={showAbout}
+        onClose={() => setShowAbout(false)}
+      />
 
-    <PrivacyModal
-      isOpen={showPrivacy}
-      onClose={() => setShowPrivacy(false)}
-    />
+      <PrivacyModal
+        isOpen={showPrivacy}
+        onClose={() => setShowPrivacy(false)}
+      />
     </>
   );
 }

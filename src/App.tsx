@@ -140,6 +140,9 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {/* Portail pour les modales - rendu à la fin pour être au-dessus de tout */}
+      <div id="modal-portal"></div>
     </div>
   );
 }
