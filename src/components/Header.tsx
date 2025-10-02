@@ -8,9 +8,11 @@ interface HeaderProps {
   favoritesCount: number;
   onShowFavorites: () => void;
   onShowHistory: () => void;
+  onShowAbout: () => void;
+  onShowPrivacy: () => void;
 }
 
-export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, onShowHistory }: HeaderProps) {
+export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, onShowHistory, onShowAbout, onShowPrivacy }: HeaderProps) {
   const [showMenu, setShowMenu] = React.useState(false);
 
   return (
@@ -62,6 +64,8 @@ export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, 
               <MenuDropdown 
                 isOpen={showMenu} 
                 onClose={() => setShowMenu(false)} 
+                onShowAbout={onShowAbout}
+                onShowPrivacy={onShowPrivacy}
               />
             </div>
 

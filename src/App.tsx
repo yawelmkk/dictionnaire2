@@ -4,6 +4,8 @@ import { SearchBar } from './components/SearchBar';
 import { SearchResults } from './components/SearchResults';
 import { FavoritesModal } from './components/FavoritesModal';
 import { HistoryModal } from './components/HistoryModal';
+import { AboutModal } from './components/AboutModal';
+import { PrivacyModal } from './components/PrivacyModal';
 import { useDictionary } from './hooks/useDictionary';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import type { SearchFilters, UserPreferences } from './types';
@@ -24,6 +26,8 @@ function App() {
 
   const [showFavorites, setShowFavorites] = useState(false);
   const [showHistory, setShowHistory] = useState(false);
+  const [showAbout, setShowAbout] = useState(false);
+  const [showPrivacy, setShowPrivacy] = useState(false);
 
   const results = searchEntries(query, filters);
   const favoriteEntries = entries.filter(entry => preferences.favorites.includes(entry.id));
@@ -91,6 +95,8 @@ function App() {
         favoritesCount={preferences.favorites.length}
         onShowFavorites={() => setShowFavorites(true)}
         onShowHistory={() => setShowHistory(true)}
+        onShowAbout={() => setShowAbout(true)}
+        onShowPrivacy={() => setShowPrivacy(true)}
       />
 
       {/* Sticky Search Bar */}
@@ -130,6 +136,16 @@ function App() {
         history={preferences.recentSearches}
         onSearchFromHistory={handleSearchFromHistory}
         onClearHistory={handleClearHistory}
+      />
+
+      <AboutModal
+        isOpen={showAbout}
+        onClose={() => setShowAbout(false)}
+      />
+
+      <PrivacyModal
+        isOpen={showPrivacy}
+        onClose={() => setShowPrivacy(false)}
       />
 
       {/* Footer */}

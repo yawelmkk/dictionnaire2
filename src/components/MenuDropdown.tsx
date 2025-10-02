@@ -1,17 +1,15 @@
 import React, { useEffect, useRef } from 'react';
 import { Info, Shield, Mail } from 'lucide-react';
-import { AboutModal } from './AboutModal';
-import { PrivacyModal } from './PrivacyModal';
 
 interface MenuDropdownProps {
   isOpen: boolean;
   onClose: () => void;
+  onShowAbout: () => void;
+  onShowPrivacy: () => void;
 }
 
-export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
+export function MenuDropdown({ isOpen, onClose, onShowAbout, onShowPrivacy }: MenuDropdownProps) {
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const [showAbout, setShowAbout] = React.useState(false);
-  const [showPrivacy, setShowPrivacy] = React.useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -30,12 +28,12 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
   }, [isOpen, onClose]);
 
   const handleAbout = () => {
-    setShowAbout(true);
+    onShowAbout();
     onClose();
   };
 
   const handlePrivacy = () => {
-    setShowPrivacy(true);
+    onShowPrivacy();
     onClose();
   };
 
@@ -76,16 +74,6 @@ export function MenuDropdown({ isOpen, onClose }: MenuDropdownProps) {
           Contactez-nous
         </button>
       </div>
-
-      <AboutModal
-        isOpen={showAbout}
-        onClose={() => setShowAbout(false)}
-      />
-
-      <PrivacyModal
-        isOpen={showPrivacy}
-        onClose={() => setShowPrivacy(false)}
-      />
     </>
   );
 }
