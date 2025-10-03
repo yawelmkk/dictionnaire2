@@ -7,6 +7,9 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
     "splash": {
+    "plugins": [
+      "nativewind/plugin"
+    ],
       "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#f59e0b"
