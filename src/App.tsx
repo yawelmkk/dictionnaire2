@@ -119,6 +119,7 @@ function App() {
           favorites={preferences.favorites}
           onToggleFavorite={handleToggleFavorite}
           loading={loading}
+          error={error}
         />
       </main>
 

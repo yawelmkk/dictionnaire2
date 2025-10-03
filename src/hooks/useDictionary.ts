@@ -1,21 +1,78 @@
 import { useState, useEffect, useMemo } from 'react';
 import type { DictionaryEntry, SearchFilters } from '../types';
+import { getDictionaryEntries, addDictionaryEntries, isDatabaseEmpty } from '../utils/indexedDB';
 
 export function useDictionary() {
   const [entries, setEntries] = useState<DictionaryEntry[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Simulate loading dictionary data
-    import('../data/dictionary.json')
-      .then((data) => {
-        setEntries(data.default);
+    const loadDictionary = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        // Vérifier si IndexedDB contient déjà des données
+        const isEmpty = await isDatabaseEmpty();
+        
+        if (!isEmpty) {
+          // Charger depuis IndexedDB
+          console.log('Chargement des données depuis IndexedDB...');
+          const indexedDBEntries = await getDictionaryEntries();
+          setEntries(indexedDBEntries);
+          console.log(`${indexedDBEntries.length} entrées chargées depuis IndexedDB`);
+        } else {
+          // Première utilisation : charger depuis le fichier JSON et sauvegarder dans IndexedDB
+          console.log('Première utilisation : chargement depuis dictionary.json...');
+          
+          try {
+            const response = await fetch('/src/data/dictionary.json');
+            if (!response.ok) {
+              throw new Error(`Erreur HTTP: ${response.status}`);
+            }
+            
+            const jsonData = await response.json();
+            const jsonEntries: DictionaryEntry[] = Array.isArray(jsonData) ? jsonData : jsonData.default || [];
+            
+            if (jsonEntries.length === 0) {
+              throw new Error('Aucune donnée trouvée dans le fichier JSON');
+            }
+
+            // Sauvegarder dans IndexedDB pour les utilisations futures
+            await addDictionaryEntries(jsonEntries);
+            setEntries(jsonEntries);
+            console.log(`${jsonEntries.length} entrées chargées depuis JSON et sauvegardées dans IndexedDB`);
+          } catch (jsonError) {
+            console.error('Erreur lors du chargement du fichier JSON:', jsonError);
+            
+            // Fallback : essayer d'importer directement le module
+            try {
+              const module = await import('../data/dictionary.json');
+              const fallbackEntries: DictionaryEntry[] = module.default || [];
+              
+              if (fallbackEntries.length > 0) {
+                await addDictionaryEntries(fallbackEntries);
+                setEntries(fallbackEntries);
+                console.log(`${fallbackEntries.length} entrées chargées via import fallback`);
+              } else {
+                throw new Error('Aucune donnée dans le fallback');
+              }
+            } catch (fallbackError) {
+              console.error('Erreur lors du fallback:', fallbackError);
+              setError('Impossible de charger les données du dictionnaire');
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Erreur lors du chargement du dictionnaire:', err);
+        setError(err instanceof Error ? err.message : 'Erreur inconnue');
+      } finally {
         setLoading(false);
-      })
-      .catch((error) => {
-        console.error('Error loading dictionary:', error);
-        setLoading(false);
-      });
+      }
+    };
+
+    loadDictionary();
   }, []);
 
   const searchEntries = useMemo(() => {
@@ -76,7 +133,7 @@ export function useDictionary() {
     };
   }, [entries]);
 
-  return { entries, searchEntries, loading };
+  return { entries, searchEntries, loading, error };
 }
 
 // Helper function for fuzzy string matching

@@ -9,9 +9,10 @@ interface SearchResultsProps {
   favorites: string[];
   onToggleFavorite: (id: string) => void;
   loading?: boolean;
+  error?: string | null;
 }
 
-export function SearchResults({ results, query, favorites, onToggleFavorite, loading }: SearchResultsProps) {
+export function SearchResults({ results, query, favorites, onToggleFavorite, loading, error }: SearchResultsProps) {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-12">
@@ -19,6 +20,18 @@ export function SearchResults({ results, query, favorites, onToggleFavorite, loa
           <Book className="w-6 h-6" />
           <span>Chargement du dictionnaire...</span>
         </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-12">
+        <div className="w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+          <Book className="w-8 h-8 text-red-500" />
+        </div>
+        <h3 className="text-lg font-medium text-red-600 dark:text-red-400 mb-2">Erreur de chargement</h3>
+        <p className="text-red-500 dark:text-red-400 max-w-md mx-auto">{error}</p>
       </div>
     );
   }
