@@ -11,7 +11,7 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 import type { SearchFilters, UserPreferences } from './types';
 
 function App() {
-  const { entries, searchEntries, loading } = useDictionary();
+  const { entries, searchEntries, loading, error } = useDictionary();
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<SearchFilters>({
     category: 'all',
@@ -119,6 +119,7 @@ function App() {
           favorites={preferences.favorites}
           onToggleFavorite={handleToggleFavorite}
           loading={loading}
+          error={error}
           error={error}
         />
       </main>
