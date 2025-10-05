@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, SafeAreaView } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
+import { WelcomeScreen } from './src/components/WelcomeScreen';
 import { Header } from './src/components/Header';
 import { SearchBar } from './src/components/SearchBar';
 import { SearchResults } from './src/components/SearchResults';
@@ -30,6 +31,7 @@ export default function App() {
   const [showHistory, setShowHistory] = useState(false);
   const [showAbout, setShowAbout] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
 
   const results = searchEntries(query, filters);
   const favoriteEntries = entries.filter(entry => preferences.favorites.includes(entry.id));
@@ -82,6 +84,15 @@ export default function App() {
 
   if (preferencesLoading) {
     return <View className="flex-1 bg-white" />;
+  }
+
+  if (showWelcome) {
+    return (
+      <WelcomeScreen 
+        onFinish={() => setShowWelcome(false)} 
+        theme={preferences.theme}
+      />
+    );
   }
 
   return (

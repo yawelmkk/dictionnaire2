@@ -10,9 +10,9 @@
     "plugins": [
       "nativewind/plugin"
     ],
-      "image": "./assets/splash.png",
+      "image": "./assets/Écran d'accueil Dictionnaire Nzébi.png",
       "resizeMode": "contain",
-      "backgroundColor": "#f59e0b"
+      "backgroundColor": "#8B7355"
     },
     "assetBundlePatterns": [
       "**/*"
