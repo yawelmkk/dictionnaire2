@@ -2,41 +2,126 @@
   "expo": {
     "name": "Dictionnaire Inzèbi",
     "slug": "nzebi-dictionary-mobile",
+    "description": "Dictionnaire Inzèbi-Français pour la préservation et la transmission du patrimoine linguistique de l'ethnie Inzèbi du Gabon et du Congo.",
+    "keywords": ["dictionnaire", "nzebi", "gabon", "congo", "langue", "culture", "africain", "bantou"],
+    "author": "Langue Nzèbi Officiel",
+    "owner": "languenzebiofficiel",
+    "privacy": "public",
+    "primaryColor": "#f59e0b",
+    "githubUrl": "https://github.com/languenzebiofficiel/nzebi-dictionary",
     "version": "1.0.0",
+    "runtimeVersion": "1.0.0",
     "orientation": "portrait",
+    "platforms": ["ios", "android"],
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
+    "backgroundColor": "#8B7355",
     "splash": {
-    "plugins": [
-      "nativewind/plugin"
-    ],
       "image": "./assets/Écran d'accueil Dictionnaire Nzébi.png",
       "resizeMode": "contain",
-      "backgroundColor": "#8B7355"
+      "backgroundColor": "#8B7355",
+      "imageUrl": "./assets/Écran d'accueil Dictionnaire Nzébi.png"
+    },
+    "notification": {
+      "icon": "./assets/icon.png",
+      "color": "#f59e0b",
+      "androidMode": "default",
+      "androidCollapsedTitle": "Dictionnaire Inzèbi"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.languenzebiofficiel.nzebi-dictionary"
+      "bundleIdentifier": "com.languenzebiofficiel.nzebi-dictionary",
+      "buildNumber": "1",
+      "icon": "./assets/icon.png",
+      "splash": {
+        "image": "./assets/Écran d'accueil Dictionnaire Nzébi.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#8B7355"
+      },
+      "infoPlist": {
+        "CFBundleDisplayName": "Dictionnaire Inzèbi",
+        "CFBundleName": "Dictionnaire Inzèbi",
+        "NSCameraUsageDescription": "Cette application n'utilise pas la caméra.",
+        "NSMicrophoneUsageDescription": "Cette application utilise le microphone pour la synthèse vocale.",
+        "NSSpeechRecognitionUsageDescription": "Cette application utilise la reconnaissance vocale pour améliorer l'expérience utilisateur."
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
+      "package": "com.languenzebiofficiel.nzebi_dictionary",
+      "versionCode": 1,
+      "icon": "./assets/icon.png",
+      "splash": {
+        "image": "./assets/Écran d'accueil Dictionnaire Nzébi.png",
+        "resizeMode": "contain",
+        "backgroundColor": "#8B7355"
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#f59e0b"
       },
-      "package": "com.languenzebiofficiel.nzebi_dictionary"
+      "permissions": [
+        "RECORD_AUDIO",
+        "INTERNET",
+        "ACCESS_NETWORK_STATE"
+      ],
+      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.languenzebiofficiel.nzebi_dictionary"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "name": "Dictionnaire Inzèbi",
+      "shortName": "Inzèbi Dict",
+      "lang": "fr",
+      "scope": "/",
+      "themeColor": "#f59e0b",
+      "backgroundColor": "#8B7355",
+      "display": "standalone",
+      "orientation": "portrait",
+      "dir": "ltr",
+      "preferRelatedApplications": false
     },
     "plugins": [
-      "expo-sqlite"
+      "expo-sqlite",
+      "expo-speech",
+      "nativewind/plugin"
     ],
     "extra": {
       "eas": {
-        "projectId": "your-project-id-here"
+        "projectId": "nzebi-dictionary-mobile-2024"
+      },
+      "storybookEnabled": false
+    },
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "langue-nzebi-officiel",
+            "project": "nzebi-dictionary-mobile"
+          }
+        }
+      ]
+    },
+    "updates": {
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/nzebi-dictionary-mobile-2024"
+    },
+    "locales": {
+      "fr": "./locales/fr.json"
+    },
+    "scheme": "nzebi-dictionary",
+    "experiments": {
+      "typedRoutes": false
+    },
+    "developmentClient": {
+      "silentLaunch": false
       }
     }
   }
