@@ -17,10 +17,10 @@
     "userInterfaceStyle": "automatic",
     "backgroundColor": "#8B7355",
     "splash": {
-      "image": "./assets/Écran d'accueil Dictionnaire Nzébi.png",
+      "image": "./assets/ChatGPT Image 1 nov. 2025, 14_47_51.png",
       "resizeMode": "contain",
       "backgroundColor": "#8B7355",
-      "imageUrl": "./assets/Écran d'accueil Dictionnaire Nzébi.png"
+      "imageUrl": "./assets/ChatGPT Image 1 nov. 2025, 14_47_51.png"
     },
     "notification": {
       "icon": "./assets/icon.png",
