@@ -120,7 +120,6 @@ function App() {
           onToggleFavorite={handleToggleFavorite}
           loading={loading}
           error={error}
-          error={error}
         />
       </main>
 

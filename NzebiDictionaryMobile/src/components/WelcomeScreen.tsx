@@ -63,7 +63,7 @@ export function WelcomeScreen({ onFinish, theme }: WelcomeScreenProps) {
         }}
       >
         <Image
-          source={require('../../assets/Écran d\'accueil Dictionnaire Nzébi.png')}
+          source={require('../../assets/splash screen dictionnaire nzébi.png')}
           style={{
             width: '100%',
             height: '100%',
