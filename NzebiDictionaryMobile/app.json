@@ -1,11 +1,11 @@
 {
   "expo": {
     "name": "Dictionnaire Inzèbi",
-    "slug": "nzebi-dictionary-mobile",
+    "slug": "nzebi-final-clean-build",
     "description": "Dictionnaire Inzèbi-Français pour la préservation et la transmission du patrimoine linguistique de l'ethnie Inzèbi du Gabon et du Congo.",
     "keywords": ["dictionnaire", "nzebi", "gabon", "congo", "langue", "culture", "africain", "bantou"],
     "author": "Langue Nzèbi Officiel",
-    "owner": "languenzebiofficiel",
+    "owner": "YOUR_EXPO_USERNAME",
     "privacy": "public",
     "primaryColor": "#f59e0b",
     "githubUrl": "https://github.com/languenzebiofficiel/nzebi-dictionary",
@@ -84,36 +84,9 @@
       "dir": "ltr",
       "preferRelatedApplications": false
     },
-    "plugins": [
-      "expo-sqlite",
-      "expo-speech",
-      "nativewind/plugin"
-    ],
+    "plugins": [],
     "extra": {
-      "eas": {
-        "projectId": "nzebi-dictionary-mobile-2024"
-      },
       "storybookEnabled": false
-    },
-    "hooks": {
-      "postPublish": [
-        {
-          "file": "sentry-expo/upload-sourcemaps",
-          "config": {
-            "organization": "langue-nzebi-officiel",
-            "project": "nzebi-dictionary-mobile"
-          }
-        }
-      ]
-    },
-    "updates": {
-      "enabled": true,
-      "checkAutomatically": "ON_LOAD",
-      "fallbackToCacheTimeout": 0,
-      "url": "https://u.expo.dev/nzebi-dictionary-mobile-2024"
-    },
-    "locales": {
-      "fr": "./locales/fr.json"
     },
     "scheme": "nzebi-dictionary",
     "experiments": {
@@ -121,7 +94,6 @@
     },
     "developmentClient": {
       "silentLaunch": false
-      }
     }
   }
 }
