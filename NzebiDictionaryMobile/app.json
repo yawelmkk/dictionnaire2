@@ -3,43 +3,19 @@
     "name": "Dictionnaire Inzèbi",
     "slug": "nzebi-final-clean-build",
     "description": "Dictionnaire Inzèbi-Français pour la préservation et la transmission du patrimoine linguistique de l'ethnie Inzèbi du Gabon et du Congo.",
-    "keywords": ["dictionnaire", "nzebi", "gabon", "congo", "langue", "culture", "africain", "bantou"],
-    "author": "Langue Nzèbi Officiel",
-    "owner": "YOUR_EXPO_USERNAME",
-    "privacy": "public",
-    "primaryColor": "#f59e0b",
-    "githubUrl": "https://github.com/languenzebiofficiel/nzebi-dictionary",
     "version": "1.0.0",
-    "runtimeVersion": "1.0.0",
     "orientation": "portrait",
-    "platforms": ["ios", "android"],
     "icon": "./assets/icon.png",
-    "userInterfaceStyle": "automatic",
     "backgroundColor": "#8B7355",
     "splash": {
       "image": "./assets/splash screen dictionnaire nzébi.png",
       "resizeMode": "contain",
       "backgroundColor": "#8B7355"
     },
-    "notification": {
-      "icon": "./assets/icon.png",
-      "color": "#f59e0b",
-      "androidMode": "default",
-      "androidCollapsedTitle": "Dictionnaire Inzèbi"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.languenzebiofficiel.nzebi-dictionary",
       "buildNumber": "1",
-      "icon": "./assets/icon.png",
-      "splash": {
-        "image": "./assets/splash screen dictionnaire nzébi.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#8B7355"
-      },
       "infoPlist": {
         "CFBundleDisplayName": "Dictionnaire Inzèbi",
         "CFBundleName": "Dictionnaire Inzèbi",
@@ -54,12 +30,6 @@
     "android": {
       "package": "com.languenzebiofficiel.nzebi_dictionary",
       "versionCode": 1,
-      "icon": "./assets/icon.png",
-      "splash": {
-        "image": "./assets/splash screen dictionnaire nzébi.png",
-        "resizeMode": "contain",
-        "backgroundColor": "#8B7355"
-      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#f59e0b"
@@ -68,32 +38,7 @@
         "RECORD_AUDIO",
         "INTERNET",
         "ACCESS_NETWORK_STATE"
-      ],
-      "playStoreUrl": "https://play.google.com/store/apps/details?id=com.languenzebiofficiel.nzebi_dictionary"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png",
-      "name": "Dictionnaire Inzèbi",
-      "shortName": "Inzèbi Dict",
-      "lang": "fr",
-      "scope": "/",
-      "themeColor": "#f59e0b",
-      "backgroundColor": "#8B7355",
-      "display": "standalone",
-      "orientation": "portrait",
-      "dir": "ltr",
-      "preferRelatedApplications": false
-    },
-    "plugins": [],
-    "extra": {
-      "storybookEnabled": false
-    },
-    "scheme": "nzebi-dictionary",
-    "experiments": {
-      "typedRoutes": false
-    },
-    "developmentClient": {
-      "silentLaunch": false
+      ]
     }
   }
 }
