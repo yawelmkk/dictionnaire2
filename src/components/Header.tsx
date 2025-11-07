@@ -10,9 +10,10 @@ interface HeaderProps {
   onShowHistory: () => void;
   onShowAbout: () => void;
   onShowPrivacy: () => void;
+  onShowLinks: () => void;
 }
 
-export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, onShowHistory, onShowAbout, onShowPrivacy }: HeaderProps) {
+export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, onShowHistory, onShowAbout, onShowPrivacy, onShowLinks }: HeaderProps) {
   const [showMenu, setShowMenu] = React.useState(false);
 
   return (
@@ -61,11 +62,12 @@ export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, 
                 <MoreVertical className="w-5 h-5 text-gray-600 dark:text-gray-300" />
               </button>
               
-              <MenuDropdown 
-                isOpen={showMenu} 
-                onClose={() => setShowMenu(false)} 
+              <MenuDropdown
+                isOpen={showMenu}
+                onClose={() => setShowMenu(false)}
                 onShowAbout={onShowAbout}
                 onShowPrivacy={onShowPrivacy}
+                onShowLinks={onShowLinks}
               />
             </div>
 

@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import { Info, Shield, Mail } from 'lucide-react';
+import { Info, Shield, Mail, Link as LinkIcon } from 'lucide-react';
 
 interface MenuDropdownProps {
   isOpen: boolean;
   onClose: () => void;
   onShowAbout: () => void;
   onShowPrivacy: () => void;
+  onShowLinks: () => void;
 }
 
-export function MenuDropdown({ isOpen, onClose, onShowAbout, onShowPrivacy }: MenuDropdownProps) {
+export function MenuDropdown({ isOpen, onClose, onShowAbout, onShowPrivacy, onShowLinks }: MenuDropdownProps) {
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -42,6 +43,11 @@ export function MenuDropdown({ isOpen, onClose, onShowAbout, onShowPrivacy }: Me
     onClose();
   };
 
+  const handleLinks = () => {
+    onShowLinks();
+    onClose();
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -72,6 +78,16 @@ export function MenuDropdown({ isOpen, onClose, onShowAbout, onShowPrivacy }: Me
         >
           <Mail className="w-4 h-4" />
           Contactez-nous
+        </button>
+
+        <div className="border-t border-gray-200 dark:border-gray-700 my-2"></div>
+
+        <button
+          onClick={handleLinks}
+          className="w-full px-4 py-2 text-left text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors duration-200 flex items-center gap-3"
+        >
+          <LinkIcon className="w-4 h-4" />
+          Liens Utiles
         </button>
       </div>
     </>
