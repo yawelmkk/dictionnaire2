@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import type { DictionaryEntry, SearchFilters } from '../types';
 import { getDictionaryEntries, addDictionaryEntries, isDatabaseEmpty } from '../utils/indexedDB';
+import { logger } from '../utils/logger';
 
 export function useDictionary() {
   const [entries, setEntries] = useState<DictionaryEntry[]>([]);
@@ -18,13 +19,13 @@ export function useDictionary() {
         
         if (!isEmpty) {
           // Charger depuis IndexedDB
-          console.log('Chargement des données depuis IndexedDB...');
+          logger.log('Chargement des données depuis IndexedDB...');
           const indexedDBEntries = await getDictionaryEntries();
           setEntries(indexedDBEntries);
-          console.log(`${indexedDBEntries.length} entrées chargées depuis IndexedDB`);
+          logger.log(`${indexedDBEntries.length} entrées chargées depuis IndexedDB`);
         } else {
           // Première utilisation : charger depuis le fichier JSON et sauvegarder dans IndexedDB
-          console.log('Première utilisation : chargement depuis dictionary.json...');
+          logger.log('Première utilisation : chargement depuis dictionary.json...');
           
           try {
             const response = await fetch('/src/data/dictionary.json');
@@ -42,9 +43,9 @@ export function useDictionary() {
             // Sauvegarder dans IndexedDB pour les utilisations futures
             await addDictionaryEntries(jsonEntries);
             setEntries(jsonEntries);
-            console.log(`${jsonEntries.length} entrées chargées depuis JSON et sauvegardées dans IndexedDB`);
+            logger.log(`${jsonEntries.length} entrées chargées depuis JSON et sauvegardées dans IndexedDB`);
           } catch (jsonError) {
-            console.error('Erreur lors du chargement du fichier JSON:', jsonError);
+            logger.error('Erreur lors du chargement du fichier JSON:', jsonError);
             
             // Fallback : essayer d'importer directement le module
             try {
@@ -54,18 +55,18 @@ export function useDictionary() {
               if (fallbackEntries.length > 0) {
                 await addDictionaryEntries(fallbackEntries);
                 setEntries(fallbackEntries);
-                console.log(`${fallbackEntries.length} entrées chargées via import fallback`);
+                logger.log(`${fallbackEntries.length} entrées chargées via import fallback`);
               } else {
                 throw new Error('Aucune donnée dans le fallback');
               }
             } catch (fallbackError) {
-              console.error('Erreur lors du fallback:', fallbackError);
+              logger.error('Erreur lors du fallback:', fallbackError);
               setError('Impossible de charger les données du dictionnaire');
             }
           }
         }
       } catch (err) {
-        console.error('Erreur lors du chargement du dictionnaire:', err);
+        logger.error('Erreur lors du chargement du dictionnaire:', err);
         setError(err instanceof Error ? err.message : 'Erreur inconnue');
       } finally {
         setLoading(false);
