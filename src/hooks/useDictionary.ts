@@ -83,34 +83,32 @@ export function useDictionary() {
 
       // Filter by category
       if (filters.category !== 'all') {
-        filtered = filtered.filter(entry => 
+        filtered = filtered.filter(entry =>
           entry.part_of_speech.toLowerCase() === filters.category.toLowerCase()
         );
       }
 
-      // Search query with fuzzy matching
+      // Search query with optimized matching
       if (query) {
         const searchTerm = query.toLowerCase().trim();
+        const words = searchTerm.split(' ').filter(w => w.length > 0);
+
         filtered = filtered.filter(entry => {
-          const searchableText = [
-            entry.nzebi_word,
-            entry.french_word,
-            entry.example_nzebi,
-            entry.example_french,
-            entry.plural_form,
-            entry.synonyms,
-            entry.scientific_name,
-            entry.imperative
-          ].join(' ').toLowerCase();
-
           // Exact match gets highest priority
-          if (searchableText.includes(searchTerm)) return true;
+          const nzebiLower = entry.nzebi_word.toLowerCase();
+          const frenchLower = entry.french_word.toLowerCase();
 
-          // Fuzzy matching for partial words
-          const words = searchTerm.split(' ');
-          return words.some(word => {
-            return searchableText.includes(word) || 
-                   levenshteinDistance(word, entry.nzebi_word.toLowerCase()) <= 2;
+          if (nzebiLower.includes(searchTerm) || frenchLower.includes(searchTerm)) {
+            return true;
+          }
+
+          // Check if all words are present (partial match)
+          return words.every(word => {
+            return nzebiLower.includes(word) ||
+                   frenchLower.includes(word) ||
+                   entry.example_nzebi.toLowerCase().includes(word) ||
+                   entry.example_french.toLowerCase().includes(word) ||
+                   (word.length >= 3 && levenshteinDistance(word, nzebiLower) <= 1);
           });
         });
 

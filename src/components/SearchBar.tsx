@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Search, Filter, X } from 'lucide-react';
 import type { SearchFilters } from '../types';
 
@@ -22,6 +22,7 @@ const categories = [
 export function SearchBar({ query, onQueryChange, filters, onFiltersChange, onAddToHistory }: SearchBarProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [inputValue, setInputValue] = useState(query);
+  const timeoutRef = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     setInputValue(query);
@@ -35,16 +36,23 @@ export function SearchBar({ query, onQueryChange, filters, onFiltersChange, onAd
     }
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setInputValue(value);
-    onQueryChange(value);
-  };
 
-  const clearSearch = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      onQueryChange(value);
+    }, 50);
+  }, [onQueryChange]);
+
+  const clearSearch = useCallback(() => {
     setInputValue('');
     onQueryChange('');
-  };
+  }, [onQueryChange]);
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-4">
