@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Header } from './components/Header';
 import { SearchBar } from './components/SearchBar';
+import { CategoryFilter } from './components/CategoryFilter';
 import { SearchResults } from './components/SearchResults';
 import { FavoritesModal } from './components/FavoritesModal';
 import { HistoryModal } from './components/HistoryModal';
@@ -113,6 +114,14 @@ function App() {
             onAddToHistory={handleAddToHistory}
           />
         </div>
+      </div>
+
+      {/* Category Filter Bar */}
+      <div className="sticky top-40 z-29">
+        <CategoryFilter
+          selectedCategory={filters.category}
+          onCategoryChange={(category) => setFilters({ ...filters, category })}
+        />
       </div>
 
       <main className="max-w-4xl mx-auto px-4 py-8">

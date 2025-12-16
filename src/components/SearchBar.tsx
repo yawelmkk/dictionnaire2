@@ -10,15 +10,6 @@ interface SearchBarProps {
   onAddToHistory: (query: string) => void;
 }
 
-const categories = [
-  { id: 'all', label: 'Toutes catégories' },
-  { id: 'nom', label: 'Noms' },
-  { id: 'verbe', label: 'Verbes' },
-  { id: 'adjectif', label: 'Adjectifs' },
-  { id: 'adverbe', label: 'Adverbes' },
-  { id: 'pronom', label: 'Pronoms' }
-];
-
 export function SearchBar({ query, onQueryChange, filters, onFiltersChange, onAddToHistory }: SearchBarProps) {
   const [showFilters, setShowFilters] = useState(false);
   const [inputValue, setInputValue] = useState(query);
@@ -97,41 +88,20 @@ export function SearchBar({ query, onQueryChange, filters, onFiltersChange, onAd
 
       {showFilters && (
         <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl p-4 shadow-lg animate-in slide-in-from-top duration-200">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Catégorie grammaticale
-              </label>
-              <select
-                value={filters.category}
-                onChange={(e) => onFiltersChange({ ...filters, category: e.target.value })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
-                         bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                         focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors duration-200"
-              >
-                {categories.map((category) => (
-                  <option key={category.id} value={category.id}>
-                    {category.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                Tri des résultats
-              </label>
-              <select
-                value={filters.sortBy}
-                onChange={(e) => onFiltersChange({ ...filters, sortBy: e.target.value as 'alphabetical' | 'relevance' })}
-                className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
-                         bg-white dark:bg-gray-700 text-gray-900 dark:text-white
-                         focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors duration-200"
-              >
-                <option value="relevance">Par pertinence</option>
-                <option value="alphabetical">Par ordre alphabétique</option>
-              </select>
-            </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+              Tri des résultats
+            </label>
+            <select
+              value={filters.sortBy}
+              onChange={(e) => onFiltersChange({ ...filters, sortBy: e.target.value as 'alphabetical' | 'relevance' })}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg
+                       bg-white dark:bg-gray-700 text-gray-900 dark:text-white
+                       focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors duration-200"
+            >
+              <option value="alphabetical">Par ordre alphabétique</option>
+              <option value="relevance">Par pertinence</option>
+            </select>
           </div>
         </div>
       )}
