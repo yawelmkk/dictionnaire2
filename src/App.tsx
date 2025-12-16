@@ -16,7 +16,7 @@ function App() {
   const [query, setQuery] = useState('');
   const [filters, setFilters] = useState<SearchFilters>({
     category: 'all',
-    sortBy: 'relevance'
+    sortBy: 'alphabetical'
   });
   
   const [preferences, setPreferences] = useLocalStorage<UserPreferences>('nzebi-dictionary-preferences', {

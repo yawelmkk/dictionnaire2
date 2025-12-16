@@ -77,9 +77,9 @@ export function useDictionary() {
   }, []);
 
   const searchEntries = useMemo(() => {
-    return (query: string, filters: SearchFilters) => {
-      if (!query && filters.category === 'all') return entries;
+    const collator = new Intl.Collator('fr', { numeric: true, sensitivity: 'accent' });
 
+    return (query: string, filters: SearchFilters) => {
       let filtered = entries;
 
       // Filter by category
@@ -123,9 +123,9 @@ export function useDictionary() {
         }
       }
 
-      // Sort alphabetically if specified
+      // Always sort alphabetically by default
       if (filters.sortBy === 'alphabetical') {
-        filtered.sort((a, b) => a.nzebi_word.localeCompare(b.nzebi_word));
+        filtered.sort((a, b) => collator.compare(a.nzebi_word, b.nzebi_word));
       }
 
       return filtered;
