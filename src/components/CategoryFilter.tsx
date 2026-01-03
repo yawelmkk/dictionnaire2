@@ -64,9 +64,9 @@ export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryF
   }, []);
 
   return (
-    <div className="w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
-      <div className="max-w-4xl mx-auto px-4">
-        <div className="relative">
+    <div className="flex justify-center">
+      <div className="max-w-4xl w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 shadow-sm rounded-lg mx-4">
+        <div className="relative px-4">
           {/* Left Gradient & Arrow */}
           {showLeftArrow && (
             <>
