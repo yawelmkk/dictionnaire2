@@ -65,41 +65,42 @@ export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryF
 
   return (
     <div className="w-full bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
-      <div className="relative">
-        {/* Left Gradient & Arrow */}
-        {showLeftArrow && (
-          <>
-            <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-gray-800 to-transparent z-10 pointer-events-none" />
-            <button
-              onClick={() => scroll('left')}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-1 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 shadow-md transition-all duration-200"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-            </button>
-          </>
-        )}
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="relative">
+          {/* Left Gradient & Arrow */}
+          {showLeftArrow && (
+            <>
+              <div className="absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white dark:from-gray-800 to-transparent z-10 pointer-events-none" />
+              <button
+                onClick={() => scroll('left')}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-1 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 shadow-md transition-all duration-200"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              </button>
+            </>
+          )}
 
-        {/* Right Gradient & Arrow */}
-        {showRightArrow && (
-          <>
-            <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-gray-800 to-transparent z-10 pointer-events-none" />
-            <button
-              onClick={() => scroll('right')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-1 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 shadow-md transition-all duration-200"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-            </button>
-          </>
-        )}
+          {/* Right Gradient & Arrow */}
+          {showRightArrow && (
+            <>
+              <div className="absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white dark:from-gray-800 to-transparent z-10 pointer-events-none" />
+              <button
+                onClick={() => scroll('right')}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-1 rounded-full bg-white dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 shadow-md transition-all duration-200"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-700 dark:text-gray-300" />
+              </button>
+            </>
+          )}
 
-        {/* Scrollable Container */}
-        <div
-          ref={scrollContainerRef}
-          className="flex gap-2 overflow-x-auto scrollbar-hide py-4 scroll-smooth px-4 w-full"
-          style={{ scrollBehavior: 'smooth' }}
-        >
+          {/* Scrollable Container */}
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-2 overflow-x-auto scrollbar-hide py-4 scroll-smooth"
+            style={{ scrollBehavior: 'smooth' }}
+          >
             {categories.map(category => (
               <button
                 key={category.id}
@@ -116,6 +117,7 @@ export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryF
                 )}
               </button>
             ))}
+          </div>
         </div>
       </div>
     </div>
