@@ -95,12 +95,11 @@ export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryF
         )}
 
         {/* Scrollable Container */}
-        <div className="max-w-4xl mx-auto px-4">
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-2 overflow-x-auto scrollbar-hide py-4 scroll-smooth"
-            style={{ scrollBehavior: 'smooth' }}
-          >
+        <div
+          ref={scrollContainerRef}
+          className="flex gap-2 overflow-x-auto scrollbar-hide py-4 scroll-smooth px-4 w-full"
+          style={{ scrollBehavior: 'smooth' }}
+        >
             {categories.map(category => (
               <button
                 key={category.id}
@@ -117,7 +116,6 @@ export function CategoryFilter({ selectedCategory, onCategoryChange }: CategoryF
                 )}
               </button>
             ))}
-          </div>
         </div>
       </div>
     </div>
