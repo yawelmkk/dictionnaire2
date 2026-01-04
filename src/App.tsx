@@ -8,6 +8,7 @@ import { HistoryModal } from './components/HistoryModal';
 import { AboutModal } from './components/AboutModal';
 import { PrivacyModal } from './components/PrivacyModal';
 import { UsefulLinksModal } from './components/UsefulLinksModal';
+import { ActivitiesSection } from './components/ActivitiesSection';
 import { useDictionary } from './hooks/useDictionary';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import type { SearchFilters, UserPreferences } from './types';
@@ -31,6 +32,7 @@ function App() {
   const [showAbout, setShowAbout] = useState(false);
   const [showPrivacy, setShowPrivacy] = useState(false);
   const [showLinks, setShowLinks] = useState(false);
+  const [showActivities, setShowActivities] = useState(false);
 
   const results = searchEntries(query, filters);
   const favoriteEntries = entries.filter(entry => preferences.favorites.includes(entry.id));
@@ -90,6 +92,54 @@ function App() {
     }));
   };
 
+  if (showActivities) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
+        <Header
+          theme={preferences.theme}
+          onThemeToggle={handleThemeToggle}
+          favoritesCount={preferences.favorites.length}
+          onShowFavorites={() => setShowFavorites(true)}
+          onShowHistory={() => setShowHistory(true)}
+          onShowAbout={() => setShowAbout(true)}
+          onShowPrivacy={() => setShowPrivacy(true)}
+          onShowLinks={() => setShowLinks(true)}
+          onShowActivities={() => setShowActivities(true)}
+        />
+
+        <main className="max-w-4xl mx-auto px-4 py-8">
+          <ActivitiesSection
+            entries={entries}
+            onClose={() => setShowActivities(false)}
+          />
+        </main>
+
+        {showAbout && (
+          <AboutModal
+            isOpen={showAbout}
+            onClose={() => setShowAbout(false)}
+          />
+        )}
+
+        {showPrivacy && (
+          <PrivacyModal
+            isOpen={showPrivacy}
+            onClose={() => setShowPrivacy(false)}
+          />
+        )}
+
+        {showLinks && (
+          <UsefulLinksModal
+            isOpen={showLinks}
+            onClose={() => setShowLinks(false)}
+          />
+        )}
+
+        <div id="modal-portal"></div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 transition-colors duration-300">
       <Header
@@ -101,6 +151,7 @@ function App() {
         onShowAbout={() => setShowAbout(true)}
         onShowPrivacy={() => setShowPrivacy(true)}
         onShowLinks={() => setShowLinks(true)}
+        onShowActivities={() => setShowActivities(true)}
       />
 
       {/* Sticky Search Bar */}

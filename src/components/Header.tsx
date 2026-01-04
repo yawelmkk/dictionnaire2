@@ -1,5 +1,5 @@
 import React from 'react';
-import { Moon, Sun, Heart, History, BookOpen, MoreVertical } from 'lucide-react';
+import { Moon, Sun, Heart, History, BookOpen, MoreVertical, Zap } from 'lucide-react';
 import { MenuDropdown } from './MenuDropdown';
 
 interface HeaderProps {
@@ -11,9 +11,10 @@ interface HeaderProps {
   onShowAbout: () => void;
   onShowPrivacy: () => void;
   onShowLinks: () => void;
+  onShowActivities: () => void;
 }
 
-export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, onShowHistory, onShowAbout, onShowPrivacy, onShowLinks }: HeaderProps) {
+export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, onShowHistory, onShowAbout, onShowPrivacy, onShowLinks, onShowActivities }: HeaderProps) {
   const [showMenu, setShowMenu] = React.useState(false);
 
   return (
@@ -32,6 +33,14 @@ export function Header({ theme, onThemeToggle, favoritesCount, onShowFavorites, 
           </div>
 
           <div className="flex items-center space-x-2">
+            <button
+              onClick={onShowActivities}
+              className="p-2 rounded-lg bg-gradient-to-br from-orange-400 to-amber-500 hover:from-orange-500 hover:to-amber-600 transition-colors duration-200"
+              title="Activités"
+            >
+              <Zap className="w-5 h-5 text-white" />
+            </button>
+
             <button
               onClick={onShowHistory}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200"
