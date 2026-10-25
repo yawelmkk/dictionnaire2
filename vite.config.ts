@@ -6,7 +6,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 export default defineConfig({
   // REMPLACEZ 'nom-de-votre-depot-github' par le nom exact de votre dépôt GitHub
   // Exemple : si votre dépôt est https://github.com/pseudo/dictionnaire-inzebi, mettez '/dictionnaire-inzebi/'
-  base: '/dictionnaire2/',
+  base: '/',
 
   publicDir: 'public',
   plugins: [
