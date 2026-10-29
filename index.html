@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="fr">
   <head>
@@ -23,7 +22,17 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Contenu textuel de secours pour Googlebot et les utilisateurs sans JS -->
+      <noscript>
+        <h1>Dictionnaire Nzébi-Français en ligne</h1>
+        <p>Découvrez plus de 4 800 mots en langue inzèbi avec leurs traductions en français, exemples et catégories.</p>
+      </noscript>
+      <div style="padding: 24px; font-family: system-ui, -apple-system, sans-serif; text-align: center; color: #374151;">
+        <h1 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 8px;">Dictionnaire Nzébi-Français</h1>
+        <p>Chargement du dictionnaire (4 800+ mots et traductions)...</p>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
